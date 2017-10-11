@@ -1,2 +1,3 @@
-# articles
-一些文本的归档。只是想用 github pages 托管一下而已。
+这里用来存放着一些零碎的文章页面。
+
+这些页面使用 Github Pages 托管。
