@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width">
+  <title>仙人微彩计算器</title>
+
+<style id="jsbin-css">
+body {
+  font-family:"Lantinghei SC","微软雅黑","Microsoft Yahei","文泉驿微米黑","WenQuanYi Micro Hei";
+  width: 300px;
+  margin: 0 auto;
+}
+h1 {
+  font-weight: normal;
+}
+.unknown [data-key]::after {
+  content: attr(data-key);
+}
+td {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+}
+td, input {
+  font-size: 18px;
+  text-align: center;
+}
+.hover {
+  background: #6cf;
+}
+.max {
+  color: #fff;
+  text-shadow: 0 0 6px red, 0 0 1px red;
+}
+input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+}
+
+</style>
+</head>
+<body>
+  <h1>仙人微彩</h1>
+  <form class="unknown" id="xianrenweicai">
+    <div class="warning"></div>
+    <table>
+      <tr>
+        <td data-key="\"></td>
+        <td data-key="A"></td>
+        <td data-key="B"></td>
+        <td data-key="C"></td>
+        <td data-key="/"></td>
+      </tr>
+      <tr>
+        <td data-key="1"></td>
+        <td><input type="number" min="1" max="9" name="val[0][0]"></td>
+        <td><input type="number" min="1" max="9" name="val[0][1]"></td>
+        <td><input type="number" min="1" max="9" name="val[0][2]"></td>
+      </tr>
+      <tr>
+        <td data-key="2"></td>
+        <td><input type="number" min="1" max="9" name="val[1][0]"></td>
+        <td><input type="number" min="1" max="9" name="val[1][1]"></td>
+        <td><input type="number" min="1" max="9" name="val[1][2]"></td>
+      </tr>
+      <tr>
+        <td data-key="3"></td>
+        <td><input type="number" min="1" max="9" name="val[2][0]"></td>
+        <td><input type="number" min="1" max="9" name="val[2][1]"></td>
+        <td><input type="number" min="1" max="9" name="val[2][2]"></td>
+      </tr>
+    </table>
+    <button>计算</button>
+  </form>
+<script>
+var form = window.xianrenweicai;
+var warning = form.querySelector('.warning');
+var lines = {
+  '1': [0, 1, 2],
+  '2': [3, 4, 5],
+  '3': [6, 7, 8],
+  'A': [0, 3, 6],
+  'B': [1, 4, 7],
+  'C': [2, 5, 8],
+  '/': [2, 4, 6],
+  '\\': [0, 4, 8]
+};
+
+form.onsubmit = function (e) {
+  e.preventDefault();
+  var matrix = [];
+  var list = [];
+  var numbers = {};
+
+  for (var x = 0; x < 3; x++) {
+    var row = [];
+    for (var y = 0; y < 3; y++) {
+      var value = form.elements["val[" + x + "][" + y + "]"].value;
+      row[y] = value;
+      list.push(value);
+    }
+    matrix[x] = row;
+  }
+  
+  // check if valid
+  var invalid = false;
+  list.forEach(function (value) {
+    if (value !== "") {
+      if (numbers[value]) {
+        invalid = true;
+      }
+      numbers[value] = 1;
+    }
+  });
+  if (invalid) {
+    warning.innerText = '数字有重复';
+    return;
+  } else {
+    warning.innerText = '';
+  }
+  
+  // calculate possibilites
+  var pendingNumbers = [];
+  for (var i = 1; i <= 9; i++) {
+    if (!numbers['' + i]) {
+      pendingNumbers.push(i);
+    }
+  }
+  if (pendingNumbers.length > 5) {
+    warning.innerText = '请填写4个数字';
+    return;
+  } else {
+    warning.innerText = '';
+  }
+  var posibilities = permutator(pendingNumbers).map(function (perm) {
+    var l = list.slice(0);
+    var cursor = 0;
+    return l.map(function (val) {
+      if (val === '') {
+        return perm[cursor++];
+      }
+      return parseInt(val);
+    });
+  });
+  
+  // calculate payouts
+  
+  // for each possibility, get each line of payouts
+  var result = {};
+  var avg = {};
+  for (var name in lines) {
+    var keys = lines[name];
+    result[name] = [];
+    posibilities.forEach(function (p) {
+      result[name].push(getPayout(p, keys));
+    });
+    var av = average(result[name]).toFixed(0);
+    avg[name] = av;
+    setResult(name, av);
+  }
+  var max = Math.max.apply(Math, Object.values(avg));
+  for (name in lines) {
+    if (avg[name] >= max) {
+      getTag(name).classList.add('max');
+    }
+  }
+  form.classList.remove('unknown');
+}
+
+form.addEventListener('mouseover', function (e) {
+  if (e.target.dataset.key) {
+    var key = e.target.dataset.key;
+    var list = lines[key];
+    list.forEach(function (k) {
+      form.elements[k].parentElement.classList.add('hover');
+    });
+  }
+});
+form.addEventListener('mouseout', function (e) {
+  if (e.target.dataset.key) {
+    var key = e.target.dataset.key;
+    var list = lines[key];
+    list.forEach(function (k) {
+      form.elements[k].parentElement.classList.remove('hover');
+    });
+  }
+});
+
+function permutator(inputArr) {
+  var results = [];
+
+  function permute(arr, memo) {
+    var cur;
+    memo = memo || [];
+
+    for (var i = 0; i < arr.length; i++) {
+      cur = arr.splice(i, 1);
+      if (arr.length === 0) {
+        results.push(memo.concat(cur));
+      }
+      permute(arr.slice(), memo.concat(cur));
+      arr.splice(i, 0, cur[0]);
+    }
+
+    return results;
+  }
+
+  return permute(inputArr);
+}
+
+function average(arr) {
+  var sum = arr.reduce(function (sum, i) {
+    return sum + i;
+  }, 0);
+  return sum / arr.length;
+}
+
+var payouts = [
+  0, 0, 0, 0, 0, 0,
+  10000, 36, 720, 360, 80, 252, 108, 72, 54, 180,
+  72, 180, 119, 36, 306, 1080, 144, 1800, 3600
+];
+function getPayout(p, keys) {
+  var value = keys.reduce(function (sum, i) {
+    return sum + p[i];
+  }, 0);
+  return payouts[value];
+}
+
+function getTag(key) {
+  key = key === "\\" ? "\\\\" : key;
+  var el = form.querySelector('[data-key="' + key + '"]');
+  return el;
+}
+
+function setResult(key, value) {
+  getTag(key).innerText = value;
+}
+</script>
+
+</body>
+</html>
