@@ -162,6 +162,9 @@ form.onsubmit = function (e) {
     avg[name] = av;
     setResult(name, av);
   }
+  form.querySelectorAll('.max').forEach(function (el) {
+     el.classList.remove('max');
+  });
   var max = Math.max.apply(Math, Object.values(avg));
   for (name in lines) {
     if (avg[name] >= max) {
