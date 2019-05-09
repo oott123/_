@@ -6,7 +6,7 @@
 
 【充值氪金】[点月卡充值](https://pay.sdo.com/item/GWPAY-100001900) ・ [点券充值](https://pay.sdo.com/item/GWPAY-0) ・ [商城](http://act.ff.sdo.com/20170918Shop/mall.html#/mall) ・ [转服](http://act.ff.sdo.com/project/141028dgf/transfer.asp) ・ [改名](http://act.ff.sdo.com/project/141028dgf/renamed.asp) ・ [雇员](http://act.ff.sdo.com/project/141028dgf/retainer.asp)
 
-【玩家回馈】[陆行鸟礼物站](http://ff.pay.sdo.com/DepositActivity/index.htm) ・ [道具仓库](http://act.ff.sdo.com/20170918Shop/index.html)
+【玩家回馈】[陆行鸟礼物站](http://ff.pay.sdo.com/DepositActivity/index.htm) ・ [道具仓库](http://act.ff.sdo.com/20170918Shop/index.html) ・ [积分商城](http://act.ff.sdo.com/20180707jifen/index.html#/exchange/exmall)
 
 ----
 
