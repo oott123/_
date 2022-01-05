@@ -14,10 +14,36 @@
 
 【图鉴收集】[坐骑](https://ff14.huijiwiki.com/wiki/%E5%9D%90%E9%AA%91%E8%8E%B7%E5%8F%96%E6%96%B9%E5%BC%8F) ・ [宠物](https://ff14.huijiwiki.com/wiki/%E5%AE%A0%E7%89%A9) ・ [幻卡](https://ff14.huijiwiki.com/wiki/%E4%B9%9D%E5%AE%AB%E5%B9%BB%E5%8D%A1%E8%8E%B7%E5%8F%96%E6%96%B9%E5%BC%8F) ・ [探索2.0](https://annangela.github.io/FFXIVSightseeingGuide/#/) ・ [探索4.0](https://bbs.nga.cn/read.php?tid=11861705)
 
+----
+
+【官网活动】<span id="huodong"></span>
+
+<style>
+#huodong span::after {
+  content: ' ・ ';
+}
+#huodong span:last-of-type::after {
+  content: '';
+}
+</style>
 
 <script>
-    b = document.createElement('base');
-    b.target = '_blank';
-    document.head.appendChild(b);
+b = document.createElement('base');
+b.target = '_blank';
+document.head.appendChild(b);
+function listhFun(data) {
+  const els = data.Data.map(d => {
+    const el = document.createElement('a')
+    el.href = d.OutLink
+    el.textContent = d.Title
+    const w = document.createElement('span')
+    w.appendChild(el)
+    return w
+  })
+  const parent = document.body.querySelector('#huodong')
+  for (const e of els) {
+    parent.appendChild(e)
+  }
+}
 </script>
-
+<script src="https://ff.web.sdo.com/inc/newdata.ashx?url=List?gameCode=ff&category=7141&pageIndex=0&pageSize=5&callback=listhFun"></script>
