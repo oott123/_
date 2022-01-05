@@ -46,4 +46,4 @@ function listhFun(data) {
   }
 }
 </script>
-<script src="https://ff.web.sdo.com/inc/newdata.ashx?url=List?gameCode=ff&category=7141&pageIndex=0&pageSize=5&callback=listhFun"></script>
+<script defer src="https://ff.web.sdo.com/inc/newdata.ashx?url=List?gameCode=ff&category=7141&pageIndex=0&pageSize=5&callback=listhFun"></script>
