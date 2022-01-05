@@ -1,12 +1,12 @@
 # FF14 收藏夹[休闲自闭向]
 
-【萌新入坑】[萌新招待](http://act.ff.sdo.com/20180515Zhaodai/index.html) 招待码 `019w-e5xe-rodk-7344` ・ [水晶传承](http://act.ff.sdo.com/project/151019shuijin/index.asp)(已死) ・ [萌新手册](https://ff14.org)
+【萌新入坑】[萌新招待](https://actff1.web.sdo.com/20190315Zhaodai/index.html#/index) 招待码 `019w-e5xe-rodk-7344` ・ [萌新手册](https://ff14.org)
 
 【官网资讯】[新闻中心](http://ff.sdo.com/web8/index.html#/newstab/newslist) ・ [更新笔记](http://ff.sdo.com/web8/index.html#/patchnote) ・ [最新活动](https://urn.cx/ff14huodong)
 
-【充值氪金】[点月卡充值](https://pay.sdo.com/item/GWPAY-100001900) ・ [点券充值](https://pay.sdo.com/item/GWPAY-0) ・ [商城](http://act.ff.sdo.com/20170918Shop/mall.html#/mall) ・ [转服](http://act.ff.sdo.com/project/141028dgf/transfer.asp) ・ [改名](http://act.ff.sdo.com/project/141028dgf/renamed.asp) ・ [雇员](http://act.ff.sdo.com/project/141028dgf/retainer.asp)
+【充值氪金】[点月卡充值](https://pay.sdo.com/item/GWPAY-100001900) ・ [点券充值](https://pay.sdo.com/item/GWPAY-0) ・ [商城](http://act.ff.sdo.com/20170918Shop/mall.html#/mall) ・ [转服](https://actff1.web.sdo.com/project/141028dgf/Index.asp) ・ [改名](http://ff14bjz.sdo.com/changeName) ・ [雇员](http://ff14bjz.sdo.com/buyEmployee)
 
-【玩家回馈】[陆行鸟礼物站](http://ff.pay.sdo.com/DepositActivity/index.htm) ・ [道具仓库](http://act.ff.sdo.com/20170918Shop/index.html) ・ [积分商城](http://act.ff.sdo.com/20180707jifen/index.html#/exchange/exmall)
+【玩家回馈】[陆行鸟礼物站](https://ffpay.sdo.com/pc/giftsStation/index.html#/index) ・ [道具仓库](https://qu.sdo.com/personal-center?merchantId=1#itemindex-100001900-1) ・ [积分商城](https://actff1.web.sdo.com/20180707jifen/index.html#/exchange/exmall)
 
 ----
 
